@@ -13,17 +13,19 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
 
-	public static WebDriver driver;;;
+	public static WebDriver driver;
 
 	@BeforeTest
 	public void setup() throws Exception {
 
-		driver=WebDriverManager.chromedriver().avoidShutdownHook().create();;
+		driver = WebDriverManager.chromedriver().avoidShutdownHook().create();
+		;
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();	
+		driver.manage().window().maximize();
 	}
-//	@AfterTest
-//	public void teardown() {
-//		driver.quit();
-//	}
+
+	@AfterTest
+	public void teardown() {
+		driver.quit();
+	}
 }
