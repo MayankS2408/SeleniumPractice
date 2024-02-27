@@ -1,7 +1,11 @@
 package Alert;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -73,4 +77,19 @@ public class AlertTest extends Base {
 	public void image() {
 		System.out.println(driver.findElement(By.cssSelector("img")).getAttribute("src"));
 	}
+
+	@Test(priority = 8)
+	public void dropdown() {
+		WebElement element = driver.findElement(By.xpath("//p[@id='testdoubleclick']"));
+		Actions action = new Actions(driver);
+		action.doubleClick(element).build().perform();
+		List<WebElement> element2=driver.findElements(By.xpath("//div[@id='myDropdown']"));
+		for(WebElement a:element2) {
+			System.out.println(a.getText());
+			a.click();
+			driver.navigate().back();
+			System.out.println("We are back");
+		}
+
+}
 }
