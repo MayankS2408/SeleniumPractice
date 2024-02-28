@@ -1,5 +1,6 @@
 package Testtool;
 
+import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -14,7 +15,6 @@ import pom.Tc_Testingtool;
 
 public class TesttoolTest extends Base{
 	
-
 	Tc_Testingtool T ;
 	@Test
 	public void Testool() throws Exception {

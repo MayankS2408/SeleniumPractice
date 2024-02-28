@@ -18,14 +18,17 @@ public class Base {
 	@BeforeTest
 	public void setup() throws Exception {
 
-		driver = WebDriverManager.chromedriver().avoidShutdownHook().create();
-		;
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 
 	@AfterTest
 	public void teardown() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
+
 	}
 }
