@@ -17,7 +17,7 @@ import BaseClass.Base;
 public class BrokenLinkTest extends Base {
 
 	@Test
-	public void brokenlink() throws MalformedURLException, IOException {
+	public void brokenlink() throws MalformedURLException, IOException, InterruptedException {
 
 		driver.get("https://www.youtube.com/");
 		int count=0;
