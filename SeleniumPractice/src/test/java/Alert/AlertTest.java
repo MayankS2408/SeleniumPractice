@@ -76,22 +76,44 @@ public class AlertTest extends Base {
 	}
 
 	@Test(priority = 7)
+	public void webtable() {
+
+		WebElement tab=driver.findElement(By.id("table1"));
+		List<WebElement>rows=tab.findElements(By.tagName("tr"));
+		int rowcount=rows.size();
+		System.out.println(rowcount);
+		for(int i=0;i<rowcount;i++) {
+			List<WebElement> column= rows.get(i).findElements(By.tagName("td"));
+			int coulmcount= column.size();
+			System.out.println(coulmcount);
+			
+			for(int j=0;j<coulmcount;j++) {
+				String celltext=column.get(j).getText();
+				if(celltext.equals("Praveen")) {
+					System.out.println(column.get(1).getText());
+				}
+			}
+		}
+		
+	}
+
+	@Test(priority = 8,enabled=false)
 	public void image() {
 		System.out.println(driver.findElement(By.cssSelector("img")).getAttribute("src"));
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 9,enabled=false)
 	public void dropdown() {
 		WebElement element = driver.findElement(By.xpath("//p[@id='testdoubleclick']"));
 		Actions action = new Actions(driver);
 		action.doubleClick(element).build().perform();
-		List<WebElement> element2=driver.findElements(By.xpath("//div[@id='myDropdown']"));
-		for(WebElement a:element2) {
+		List<WebElement> element2 = driver.findElements(By.xpath("//div[@id='myDropdown']"));
+		for (WebElement a : element2) {
 			System.out.println(a.getText());
 			a.click();
 			driver.navigate().back();
 			System.out.println("We are back");
 		}
 
-}
+	}
 }
